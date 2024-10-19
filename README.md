@@ -14,7 +14,29 @@ intended to be used. If you need to use something in a subclass, you just *can*.
 
 # Get it!
 
-No! Not yet! Try JitPack if you must!
+The dependency for a libGDX project's core module looks like:
+
+```groovy
+implementation "com.github.tommyettinger:spritz:0.0.1"
+```
+
+This assumes you already depend on libGDX; spritz depends on version 1.13.0 or higher. This does depend on Java 8 as a
+language level, but it uses no APIs added in Java 8 (making it safe to use on the antiquated RoboVM stable version).
+Targeting 8 instead of 7 means you can actually build this with recent JDKs, such as Java 21, which have dropped support
+for the teenage (mutant) Java 7 target.
+
+If you use GWT, this is compatible. It needs this dependency in the html module:
+
+```groovy
+implementation "com.github.tommyettinger:spritz:0.0.1:sources"
+```
+
+And this in GdxDefinition.gwt.xml :
+
+```xml
+<inherits name="com.github.tommyettinger.spritz" />
+```
+
 
 # License
 
